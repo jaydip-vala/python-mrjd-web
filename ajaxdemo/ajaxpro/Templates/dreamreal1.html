@@ -1,0 +1,46 @@
+{% load static %}
+{% load dajaxice_templatetags %}
+<!-- {% load widget_tweaks %} -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+   <form action = "" method = "post" id = "my_form" accept-charset = "utf-8">
+       {% csrf_token %}
+       {{ form.as_p }}
+       <p><input type = "submit" id="btn" value = "Send" ></p>
+   </form> 
+    <!-- <form method="post" id = "my_form" novalidate>
+                    {% csrf_token %} {# cross site request forgery #}
+                    {% for hidden_field in form.hidden_fields %}
+                        {{ hidden_field }}
+                    {% endfor %}
+                    {% for field in form.visible_fields %}
+                    <div class="form-group">
+                        {{ field.label_tag }}
+                        {% render_field field class="form-control" %}
+                        {% if field.help_text %}
+                        <small class="form-text text-muted">{{ field.help_text }}</small>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                    <button type="submit" id="btn" class="btn btn-primary">post</button>
+                </form> -->
+                
+<div>
+    hello
+</div>
+<script type="text/javascript">
+    $(document).ready(function(ex){
+    alert("in form"+ex);
+      $("#btn").click(function(){
+        $("div").html($("#my_form").serialize());
+      });
+    });
+    </script>
+</body>
+</html>

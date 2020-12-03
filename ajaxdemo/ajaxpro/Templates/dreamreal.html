@@ -1,0 +1,25 @@
+{% load static %}
+{% load dajaxice_templatetags %}
+
+<html>
+   <head>
+      <!-- {% dajaxice_js_import %} -->
+       <script src = "{% static '/static/jquery-1.11.3.min.js' %}" type = "text/javascript" charset = "utf-8"></script>
+       <script src = "{% static '/static/dajax/jquery.dajax.core.js' %}"></script>
+
+       <script>
+           function send_form(){
+              Dajaxice.myapp.send_form(Dajax.process,{'form':$('#my_form').serialize(true)});
+           }
+        </script>
+   </head>
+   <body>
+
+      <form action = "" method = "post" id = "my_form" accept-charset = "utf-8">
+         {% csrf_token %}
+         {{ form.as_p }}
+         <p><input type = "button" value = "Send" onclick = "send_form()"></p>
+      </form>
+
+   </body>
+</html>
